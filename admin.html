@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - HNB PRIME</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; }
+  </style>
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuKdBzGMnoA9xqZ8UICKxdAX0Xp0r-fOU",
+      authDomain: "kitchen-shop-52609.firebaseapp.com",
+      projectId: "kitchen-shop-52609",
+      storageBucket: "kitchen-shop-52609.firebasestorage.app",
+      messagingSenderId: "467953520069",
+      appId: "1:467953520069:web:b576ebaa3cadd6d9e84fac",
+      measurementId: "G-VXF14YG1GP"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    window.db = getFirestore(app);
+    window.storage = getStorage(app);
+  </script>
+</head>
+<body class="bg-gray-50">
+  <div class="min-h-screen">
+    <nav class="bg-white shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-5">
+        <div class="flex justify-between items-center">
+          <div class="text-2xl font-bold text-orange-600">HNB PRIME - Admin</div>
+          <a href="index.html" class="text-gray-600 hover:text-orange-600">← Back to Shop</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 py-8">
+      <h1 class="text-3xl font-bold mb-8">Product Management</h1>
+
+      <!-- Add Product Form -->
+      <div class="bg-white rounded-2xl p-6 shadow-md mb-8">
+        <h2 id="form-title" class="text-xl font-semibold mb-4">Add New Product</h2>
+        <form id="add-product-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" id="product-name" placeholder="Product Name" class="border rounded-lg px-4 py-2" required>
+          <input type="number" id="product-price" placeholder="Price (ETB)" class="border rounded-lg px-4 py-2" required>
+          <select id="product-category" class="border rounded-lg px-4 py-2" required>
+            <option value="">Select Category</option>
+            <option value="Appliances">Appliances</option>
+            <option value="Tableware">Tableware</option>
+            <option value="Cookware">Cookware</option>
+            <option value="Kitchen Tools">Kitchen Tools</option>
+            <option value="Other">Other</option>
+          </select>
+          <input type="text" id="product-image" placeholder="Image URL (e.g., https://...)" class="border rounded-lg px-4 py-2">
+          <label class="flex items-center">
+            <input type="checkbox" id="product-featured" class="mr-2">
+            Featured Product
+          </label>
+          <button type="submit" class="bg-orange-600 hover:bg-orange-700 text-white py-2 px-6 rounded-lg font-medium">
+            Add Product
+          </button>
+        </form>
+      </div>
+
+      <!-- Products List -->
+      <div class="bg-white rounded-2xl p-6 shadow-md">
+        <h2 class="text-xl font-semibold mb-4">Current Products</h2>
+        <div id="products-list" class="space-y-4">
+          <!-- Products will be loaded here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Lux 60-liter Electric Oven",
+      "price": 21500,
+      "category": "Appliances",
+      "image": "images/Lux 60-liter Electric Oven.jpg",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "name": "Artificial Cherry Blossom Tree",
+      "price": 16500,
+      "category": "Tableware",
+      "image": "images/Artificial Cherry Blossom Tree.jpg",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "name": "Hobby Lobby Onion Chopper",
+      "price": 4900,
+      "category": "Appliances",
+      "image": "images/Hobby Lobby Onion Chopper.jpg",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "name": "Lux Round Oven",
+      "price": 22500,
+      "category": "Appliances",
+      "image": "images/Lux Round Oven.jpg" 
+    },
+    {
+      "id": 5,
+      "name": "Glass Water Mug",
+      "price": 800,
+      "category": "Tableware",
+      "image": "images/Glass Water Mug.jpg",
+      "featured": true
+    },
+    {
+      "id": 6,
+      "name": "Saachi Electric Coffee Grinder",
+      "price": 2300,
+      "category": "Appliances",
+      "image": "images/Saachi Electric Coffee Grinder.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Inima Electric Coffee Grinder",
+      "price": 2500,
+      "category": "Appliances",
+      "image": "images/Inima Electric Coffee Grinder.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Haochu Ceramic Pizza Pan",
+      "price": 13000,
+      "category": "Cookware",
+      "image": "images/Haochu Ceramic Pizza Pan.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Dual Basket Air Fryer",
+      "price": 16000,
+      "category": "Appliances",
+      "image": "images/Dual Basket Air Fryer.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Kitchen Knife Set",
+      "price": 3800,
+      "category": "Kitchen Tools",
+      "image": "images/Kitchen Knife Set.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Kitchen Utensil Set",
+      "price": 4500,
+      "category": "Kitchen Tools",
+      "image": "images/Kitchen Utensil Set.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Stainless steel Cookware",
+      "price": 10000,
+      "category": "Cookware",
+      "image": "images/Stainless steel Cookware.jpg"
+    }
+  ]
+}

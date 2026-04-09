@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - HNB PRIME</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+
+<!-- Mobile-Friendly Navbar -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-5">
+    <div class="flex justify-between items-center">
+      <div class="text-3xl font-bold text-orange-600">HNB PRIME</div>
+
+      <div class="hidden md:flex gap-8 text-lg font-medium">
+        <a href="index.html" class="hover:text-orange-600 transition">Home</a>
+        <a href="products.html" class="hover:text-orange-600 transition">Products</a>
+        <a href="about.html" class="hover:text-orange-600 transition">About</a>
+        <a href="contact.html" class="hover:text-orange-600 transition">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button onclick="window.location.href='cart.html'" class="relative text-2xl" type="button">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count"
+                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+            0
+          </span>
+        </button>
+
+        <button id="hamburger" class="md:hidden text-3xl" type="button">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden mt-4 py-4 border-t">
+      <div class="flex flex-col gap-5 text-lg font-medium">
+        <a href="index.html" class="hover:text-orange-600 py-2">Home</a>
+        <a href="products.html" class="hover:text-orange-600 py-2">Products</a>
+        <a href="cart.html" class="hover:text-orange-600 py-2">Cart</a>
+        <a href="about.html" class="hover:text-orange-600 py-2">About</a>
+        <a href="contact.html" class="hover:text-orange-600 py-2">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="max-w-7xl mx-auto px-6 py-16">
+  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-10">
+    <div>
+      <h1 class="text-5xl font-bold">Your Cart</h1>
+      <p class="text-gray-600 mt-3">Review your selected products, remove items, and checkout via Telegram.</p>
+    </div>
+    <a href="products.html" class="inline-flex items-center gap-3 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-3xl font-semibold transition">
+      <i class="fas fa-store"></i>
+      Continue Shopping
+    </a>
+  </div>
+
+  <div class="grid gap-8 lg:grid-cols-[1.7fr_0.9fr]">
+    <div class="bg-white rounded-3xl shadow p-6">
+      <div id="cart-items" class="space-y-4"></div>
+      <div id="empty-cart-message" class="text-center text-gray-500 py-20 hidden">
+        <p class="text-2xl font-semibold">Your cart is empty</p>
+        <p class="mt-3">Add items from the products page to see them here.</p>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <div id="cart-footer" class="bg-white rounded-3xl shadow p-6">
+        <h2 class="text-2xl font-semibold mb-4">Order Summary</h2>
+        <div class="flex items-center justify-between text-lg text-gray-700 mb-3">
+          <span>Items</span>
+          <span id="cart-item-count">0 items</span>
+        </div>
+        <div class="flex items-center justify-between text-lg font-semibold">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">0 ETB</span>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow p-6">
+        <button onclick="checkout()" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 rounded-3xl font-semibold transition">
+          Checkout via Telegram
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="https://t.me/Lovebarr" target="_blank"
+   class="fixed bottom-6 right-6 bg-[#229ED9] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl text-4xl hover:scale-110 transition">
+  <i class="fab fa-telegram-plane"></i>
+</a>
+
+<footer class="bg-slate-950 text-white mt-16">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div>
+        <h3 class="text-2xl font-bold text-orange-500 mb-4">HNB PRIME</h3>
+        <p class="text-gray-400 leading-relaxed">
+          Quality kitchen equipment and household materials in Bishoftu.<br>
+          Best prices • Fast response • Trusted service.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-2xl font-bold text-orange-500 mb-4">Contact Us</h4>
+        <div class="space-y-3 text-gray-400">
+          <p><i class="fas fa-phone mr-3"></i> +251 960 966 432</p>
+          <p>
+            <i class="fab fa-telegram mr-3 text-[#229ED9]"></i>
+            <a href="https://t.me/Lovebarr" target="_blank" class="hover:text-white">@Lovebarr</a>
+          </p>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-2xl font-bold text-orange-500 mb-4">Follow Us</h4>
+        <div class="flex gap-7 text-4xl">
+          <a href="https://t.me/Lovebarr" target="_blank" class="text-[#229ED9] hover:scale-110 transition"><i class="fab fa-telegram"></i></a>
+          <a href="#" target="_blank" class="text-[#E4405F] hover:scale-110 transition"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank" class="text-[#FF0050] hover:scale-110 transition"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+      © 2026 HNB PRIME • All Rights Reserved
+    </div>
+  </div>
+</footer>
+
+<script src="cart.js" type="module"></script>
+</body>
+</html>
