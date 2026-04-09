@@ -13,7 +13,6 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-    import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCuKdBzGMnoA9xqZ8UICKxdAX0Xp0r-fOU",
@@ -27,7 +26,6 @@
 
     const app = initializeApp(firebaseConfig);
     window.db = getFirestore(app);
-    window.storage = getStorage(app);
   </script>
 </head>
 <body class="bg-gray-50">
@@ -35,7 +33,7 @@
     <nav class="bg-white shadow-md">
       <div class="max-w-7xl mx-auto px-6 py-5">
         <div class="flex justify-between items-center">
-          <div class="text-2xl font-bold text-orange-600">HNB PRIME - Admin</div>
+          <div class="text-2xl font-bold text-orange-600">HNB PRIME - Manager</div>
           <a href="index.html" class="text-gray-600 hover:text-orange-600">← Back to Shop</a>
         </div>
       </div>
@@ -44,12 +42,29 @@
     <div class="max-w-7xl mx-auto px-6 py-8">
       <h1 class="text-3xl font-bold mb-8">Product Management</h1>
 
-      <!-- Add Product Form -->
+      <!-- Grand Total Profit Section -->
+      <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 mb-8">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-xl font-semibold text-emerald-800">Grand Total Profit</h2>
+            <p id="grand-total" class="text-4xl font-bold text-emerald-700 mt-2">0 ETB</p>
+          </div>
+          <button onclick="resetAllSoldRecords()" 
+                  class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-medium">
+            Clear All Sold Records
+          </button>
+        </div>
+      </div>
+
+      <!-- Add / Edit Product Form -->
       <div class="bg-white rounded-2xl p-6 shadow-md mb-8">
         <h2 id="form-title" class="text-xl font-semibold mb-4">Add New Product</h2>
         <form id="add-product-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input type="text" id="product-name" placeholder="Product Name" class="border rounded-lg px-4 py-2" required>
-          <input type="number" id="product-price" placeholder="Price (ETB)" class="border rounded-lg px-4 py-2" required>
+          <input type="number" id="product-price" placeholder="Selling Price (ETB)" class="border rounded-lg px-4 py-2" required>
+          <input type="number" id="purchase-price" placeholder="Purchase Price (ETB)" class="border rounded-lg px-4 py-2">
+          <input type="number" id="product-stock" placeholder="Initial Stock" value="0" class="border rounded-lg px-4 py-2" required>
+          
           <select id="product-category" class="border rounded-lg px-4 py-2" required>
             <option value="">Select Category</option>
             <option value="Appliances">Appliances</option>
@@ -58,12 +73,15 @@
             <option value="Kitchen Tools">Kitchen Tools</option>
             <option value="Other">Other</option>
           </select>
-          <input type="text" id="product-image" placeholder="Image URL (e.g., https://...)" class="border rounded-lg px-4 py-2">
+          
+          <input type="text" id="product-image" placeholder="Image URL" class="border rounded-lg px-4 py-2">
+          
           <label class="flex items-center">
             <input type="checkbox" id="product-featured" class="mr-2">
             Featured Product
           </label>
-          <button type="submit" class="bg-orange-600 hover:bg-orange-700 text-white py-2 px-6 rounded-lg font-medium">
+          
+          <button type="submit" class="bg-orange-600 hover:bg-orange-700 text-white py-3 px-6 rounded-lg font-medium md:col-span-2">
             Add Product
           </button>
         </form>
@@ -73,7 +91,7 @@
       <div class="bg-white rounded-2xl p-6 shadow-md">
         <h2 class="text-xl font-semibold mb-4">Current Products</h2>
         <div id="products-list" class="space-y-4">
-          <!-- Products will be loaded here -->
+          <!-- Filled by JavaScript -->
         </div>
       </div>
     </div>

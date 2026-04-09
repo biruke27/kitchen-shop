@@ -39,6 +39,10 @@ async function loadProducts() {
 }
 
 // ==================== RENDER PRODUCTS ====================
+function getProductDisplayPrice(product) {
+  return product.sellingPrice ?? product.price ?? 0;
+}
+
 function renderProducts(productList) {
   const container = document.getElementById('all-products');
   const noResults = document.getElementById('no-results');
@@ -56,6 +60,7 @@ function renderProducts(productList) {
   container.innerHTML = productList.map(product => {
     // Escape product name for JavaScript string
     const escapedName = product.name.replace(/'/g, "\\'").replace(/"/g, '\\"');
+    const displayPrice = getProductDisplayPrice(product);
     
     return `
       <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
@@ -65,11 +70,11 @@ function renderProducts(productList) {
              onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'">
         <div class="p-5">
           <h3 class="font-semibold text-lg leading-tight">${product.name}</h3>
-          <p class="text-orange-600 font-bold text-2xl mt-2">${product.price} ETB</p>
+          <p class="text-orange-600 font-bold text-2xl mt-2">${displayPrice} ETB</p>
           
           <button data-product-id="${product.id}"
                   data-product-name="${escapedName}"
-                  data-product-price="${product.price}"
+                  data-product-price="${displayPrice}"
                   data-product-image="${product.image}"
                   class="add-to-cart-btn mt-5 w-full bg-orange-600 hover:bg-orange-700 text-white py-3.5 rounded-xl font-medium transition">
             Add to Cart
@@ -95,6 +100,7 @@ function renderFeaturedProducts(productList) {
 
   container.innerHTML = featured.map(product => {
     const escapedName = product.name.replace(/'/g, "\\'").replace(/"/g, '\\"');
+    const displayPrice = getProductDisplayPrice(product);
     
     return `
       <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
@@ -104,11 +110,11 @@ function renderFeaturedProducts(productList) {
              onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'">
         <div class="p-5">
           <h3 class="font-semibold text-lg leading-tight">${product.name}</h3>
-          <p class="text-orange-600 font-bold text-2xl mt-2">${product.price} ETB</p>
+          <p class="text-orange-600 font-bold text-2xl mt-2">${displayPrice} ETB</p>
           
           <button data-product-id="${product.id}"
                   data-product-name="${escapedName}"
-                  data-product-price="${product.price}"
+                  data-product-price="${displayPrice}"
                   data-product-image="${product.image}"
                   class="add-to-cart-btn mt-5 w-full bg-orange-600 hover:bg-orange-700 text-white py-3.5 rounded-xl font-medium transition">
             Add to Cart
